@@ -32,7 +32,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-dvh flex-col">
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
-        <ActivityBar explorerOpen={explorerOpen} onToggle={() => setExplorerOpen((v) => !v)} />
+        <ActivityBar
+          explorerOpen={explorerOpen}
+          onToggleExplorer={() => setExplorerOpen((v) => !v)}
+          terminalOpen={terminalOpen}
+          onToggleTerminal={() => setTerminalOpen((v) => !v)}
+        />
         {explorerOpen && <ExplorerPanel />}
         <MobileNav />
 
