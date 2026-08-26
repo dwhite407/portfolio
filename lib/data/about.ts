@@ -32,5 +32,5 @@ This site is itself one of those things I've built: a small terminal-flavored po
 
 ---
 
-Want the technical rundown? Try \`cat skills.json\` or \`cat projects/blokus-board-game/stack.json\` in the terminal. Want to reach out? Try \`contact\`.
+Want the technical rundown? Try \`cat skills.json\` or \`cat projects/blokus-board-game/architecture.json\` in the terminal. Want to reach out? Try \`contact\`.
 `;

@@ -5,7 +5,7 @@ export interface MarkdownFile {
 
 export interface JsonFile {
   kind: "json";
-  variant: "skills" | "stack";
+  variant: "skills";
   data: unknown;
 }
 
@@ -21,7 +21,14 @@ export interface CodeFile {
   data: unknown;
 }
 
-export type FileContent = MarkdownFile | JsonFile | BinaryFile | CodeFile;
+/** A file that renders as a flow diagram (boxes + arrows) rather than text — e.g. a project's architecture.json. */
+export interface ArchitectureFile {
+  kind: "architecture";
+  steps: { label: string; detail?: string }[];
+  connections?: string[];
+}
+
+export type FileContent = MarkdownFile | JsonFile | BinaryFile | CodeFile | ArchitectureFile;
 
 export interface FsFileNode {
   type: "file";

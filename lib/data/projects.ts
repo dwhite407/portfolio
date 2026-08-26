@@ -3,6 +3,11 @@ export interface StackItem {
   category: "language" | "framework" | "infra" | "tool";
 }
 
+export interface ArchitectureStep {
+  label: string;
+  detail?: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -14,11 +19,15 @@ export interface Project {
   decisions: string[];
   retrospective: string;
   stack: StackItem[];
+  /** A simple left-to-right (or top-to-bottom on mobile) flow: client -> server -> database, etc. */
+  architecture?: ArchitectureStep[];
+  /** Labels for the arrows between architecture steps, e.g. "WebSocket" or "REST". One shorter than `architecture`. */
+  connections?: string[];
   links?: { repo?: string; demo?: string };
 }
 
 // Each project becomes both a rendered case-study page (/projects/<slug>)
-// and a node in the fake filesystem (projects/<slug>/README.md + stack.json).
+// and a node in the fake filesystem (projects/<slug>/README.md + architecture.json).
 //
 // NOTE: role/timeframe/stack are pulled straight from the resume. The
 // problem/constraints/decisions/retrospective prose is a best-effort writeup
@@ -51,6 +60,12 @@ export const projects: Project[] = [
       { name: "Node.js", category: "framework" },
       { name: "Socket.IO", category: "framework" },
     ],
+    architecture: [
+      { label: "React Client", detail: "renders the board, sends moves" },
+      { label: "Socket.IO Server (Node.js)", detail: "validates moves, tracks turn order" },
+      { label: "In-memory Game State", detail: "board + player state per room" },
+    ],
+    connections: ["WebSocket (Socket.IO)", "reads/writes"],
   },
   {
     slug: "fitness-tracker",
@@ -77,6 +92,128 @@ export const projects: Project[] = [
       { name: "Express", category: "framework" },
       { name: "SQLite", category: "infra" },
     ],
+    architecture: [
+      { label: "Multi-screen Web UI", detail: "add / edit / view meals" },
+      { label: "Express REST API", detail: "meal CRUD endpoints" },
+      { label: "SQLite Database", detail: "persisted meal logs" },
+    ],
+    connections: ["REST (HTTP/JSON)", "SQL"],
+  },
+  // TODO: placeholders below — swap in real projects as you build them.
+  {
+    slug: "project-3",
+    title: "Project Three — Replace Me",
+    summary: "One-line summary of what this project is and who it's for.",
+    role: "Solo developer",
+    timeframe: "2026",
+    problem:
+      "Describe the problem this project solved. What was broken, slow, missing, or annoying before this existed?",
+    constraints: [
+      "Ship a usable v1 in a fixed, tight timeframe",
+      "Had to work within an existing system/API you didn't control",
+    ],
+    decisions: [
+      "Chose [technology/approach] over [alternative] because [reason].",
+      "Kept the data model deliberately simple to move fast, with a plan to normalize later.",
+    ],
+    retrospective:
+      "What you'd do differently with hindsight: e.g. add tests earlier, or scope the MVP tighter before writing code.",
+    stack: [
+      { name: "TypeScript", category: "language" },
+      { name: "Next.js", category: "framework" },
+      { name: "PostgreSQL", category: "infra" },
+    ],
+    architecture: [
+      { label: "Next.js Frontend", detail: "[what the UI does]" },
+      { label: "[API layer]", detail: "[what it validates/handles]" },
+      { label: "PostgreSQL", detail: "[what's stored]" },
+    ],
+    connections: ["REST/GraphQL", "SQL"],
+  },
+  {
+    slug: "project-4",
+    title: "Project Four — Replace Me",
+    summary: "One-line summary of what this project is and who it's for.",
+    role: "Full-stack developer",
+    timeframe: "2026",
+    problem:
+      "Describe the problem this project solved. What was the trigger — an idea, a class assignment, a personal need?",
+    constraints: [
+      "Limited time alongside school/work",
+      "Learning the stack while building it",
+    ],
+    decisions: [
+      "Chose [technology/approach] because it matched what you wanted to learn.",
+      "Cut [feature] from v1 to protect the timeline.",
+    ],
+    retrospective: "What you'd do differently: e.g. plan the data model before writing UI code.",
+    stack: [
+      { name: "Python", category: "language" },
+      { name: "Django", category: "framework" },
+      { name: "PostgreSQL", category: "infra" },
+    ],
+    architecture: [
+      { label: "[Client]", detail: "[what the user interacts with]" },
+      { label: "Django Backend", detail: "[what it does]" },
+      { label: "PostgreSQL", detail: "[what's stored]" },
+    ],
+    connections: ["HTTP", "ORM"],
+  },
+  {
+    slug: "project-5",
+    title: "Project Five — Replace Me",
+    summary: "One-line summary of what this project is and who it's for.",
+    role: "Mobile developer",
+    timeframe: "2026",
+    problem: "Describe the problem this project solved, from the user's point of view.",
+    constraints: [
+      "Needed to work well on low-end devices",
+      "No budget for paid infrastructure beyond a free tier",
+    ],
+    decisions: [
+      "Chose [technology/approach] to keep the app responsive.",
+      "Cached data locally to reduce network calls.",
+    ],
+    retrospective: "What you'd do differently: e.g. plan for offline support from day one.",
+    stack: [
+      { name: "Kotlin", category: "language" },
+      { name: "Jetpack Compose", category: "framework" },
+      { name: "SQLite", category: "infra" },
+    ],
+    architecture: [
+      { label: "Jetpack Compose UI", detail: "[what the screens do]" },
+      { label: "[Sync layer]", detail: "[what it syncs/caches]" },
+      { label: "Local SQLite", detail: "[what's stored on-device]" },
+    ],
+    connections: ["[protocol]", "reads/writes"],
+  },
+  {
+    slug: "project-6",
+    title: "Project Six — Replace Me",
+    summary: "One-line summary of what this project is and who it's for.",
+    role: "Backend engineer",
+    timeframe: "2027",
+    problem: "Describe the problem this project solved — an inefficiency, a manual process, a bottleneck.",
+    constraints: [
+      "Had to stay compatible with an existing data source",
+      "Team project — needed clear ownership of each piece",
+    ],
+    decisions: [
+      "Chose [technology/approach] because it matched the team's existing skill set.",
+      "Wrote a migration script instead of a big-bang cutover to de-risk rollout.",
+    ],
+    retrospective: "What you'd do differently: e.g. invest in monitoring/alerting sooner.",
+    stack: [
+      { name: "SQL", category: "language" },
+      { name: "C++", category: "language" },
+      { name: "Docker", category: "tool" },
+    ],
+    architecture: [
+      { label: "[Data source]", detail: "[where data comes from]" },
+      { label: "[Processing service]", detail: "[what it transforms/computes]" },
+      { label: "SQL Database", detail: "[what's stored]" },
+    ],
+    connections: ["[protocol]", "SQL"],
   },
 ];
 

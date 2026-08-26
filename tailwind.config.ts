@@ -10,16 +10,16 @@ const config: Config = {
     extend: {
       colors: {
         term: {
-          bg: "#0b0f14",
-          panel: "#10151c",
-          panel2: "#151b23",
-          border: "#232c38",
-          text: "#d7dee6",
-          muted: "#7a8699",
-          accent: "#4ade80",
-          accent2: "#60a5fa",
-          warn: "#fbbf24",
-          error: "#f87171",
+          bg: "rgb(var(--term-bg) / <alpha-value>)",
+          panel: "rgb(var(--term-panel) / <alpha-value>)",
+          panel2: "rgb(var(--term-panel2) / <alpha-value>)",
+          border: "rgb(var(--term-border) / <alpha-value>)",
+          text: "rgb(var(--term-text) / <alpha-value>)",
+          muted: "rgb(var(--term-muted) / <alpha-value>)",
+          accent: "rgb(var(--term-accent) / <alpha-value>)",
+          accent2: "rgb(var(--term-accent2) / <alpha-value>)",
+          warn: "rgb(var(--term-warn) / <alpha-value>)",
+          error: "rgb(var(--term-error) / <alpha-value>)",
         },
       },
       fontFamily: {

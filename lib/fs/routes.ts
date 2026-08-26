@@ -9,9 +9,12 @@ export function pathToRoute(fsPath: string): string | null {
   const projectMatch = fsPath.match(/^\/projects\/([^/]+)$/);
   if (projectMatch) return `/projects/${projectMatch[1]}`;
 
-  // A project's README.md and stack.json both render on the project's case-study page.
-  const projectFileMatch = fsPath.match(/^\/projects\/([^/]+)\/(README\.md|stack\.json)$/);
-  if (projectFileMatch) return `/projects/${projectFileMatch[1]}`;
+  // A project's README.md renders on its case-study page; architecture.json gets its own page.
+  const readmeMatch = fsPath.match(/^\/projects\/([^/]+)\/README\.md$/);
+  if (readmeMatch) return `/projects/${readmeMatch[1]}`;
+
+  const architectureMatch = fsPath.match(/^\/projects\/([^/]+)\/architecture\.json$/);
+  if (architectureMatch) return `/projects/${architectureMatch[1]}/architecture`;
 
   if (fsPath === "/about.md") return "/about";
   if (fsPath === "/contact.md") return "/contact";
@@ -38,6 +41,11 @@ export function routeToInfo(pathname: string): RouteInfo | null {
   if (projectMatch) {
     const slug = projectMatch[1];
     return { cwd: `/projects/${slug}`, narration: `open ${slug}` };
+  }
+
+  const projectArchMatch = pathname.match(/^\/projects\/([^/]+)\/architecture$/);
+  if (projectArchMatch) {
+    return { narration: `cat projects/${projectArchMatch[1]}/architecture.json` };
   }
 
   if (pathname === "/about") return { narration: "cat about.md" };

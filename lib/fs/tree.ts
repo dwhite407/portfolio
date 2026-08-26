@@ -21,9 +21,13 @@ function buildProjectDir(slug: string): FsDirNode {
       },
       {
         type: "file",
-        name: "stack.json",
-        path: `${path}/stack.json`,
-        content: { kind: "json", variant: "stack", data: project.stack },
+        name: "architecture.json",
+        path: `${path}/architecture.json`,
+        content: {
+          kind: "architecture",
+          steps: project.architecture ?? [],
+          connections: project.connections,
+        },
       },
     ],
   };

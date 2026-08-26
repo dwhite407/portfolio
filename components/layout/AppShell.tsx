@@ -1,14 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ActivityBar } from "./ActivityBar";
+import { ActivityBar, type SideView } from "./ActivityBar";
 import { ExplorerPanel } from "./ExplorerPanel";
+import { SearchPanel } from "./SearchPanel";
+import { ExtensionsPanel } from "./ExtensionsPanel";
 import { MobileNav } from "./MobileNav";
 import { StatusBar } from "./StatusBar";
 import { Terminal } from "@/components/terminal/Terminal";
 import { FileIcon } from "./FileIcon";
 import { nodeForRoute } from "@/lib/fs/routes";
+import { DEFAULT_THEME_ID } from "@/lib/data/themes";
 
 function OpenFileTab() {
   const pathname = usePathname();
@@ -26,19 +29,40 @@ function OpenFileTab() {
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const [explorerOpen, setExplorerOpen] = useState(true);
+  const [sideView, setSideView] = useState<SideView>("explorer");
   const [terminalOpen, setTerminalOpen] = useState(false);
+  const [themeId, setThemeId] = useState(DEFAULT_THEME_ID);
+
+  useEffect(() => {
+    // The inline script in app/layout.tsx already applied the stored theme to
+    // the DOM before hydration (avoiding a flash) — this just syncs React
+    // state to match it, for the Extensions panel's "Installed" label.
+    const stored = localStorage.getItem("theme");
+    if (stored) setThemeId(stored);
+  }, []);
+
+  function activateTheme(id: string) {
+    setThemeId(id);
+    document.documentElement.setAttribute("data-theme", id);
+    localStorage.setItem("theme", id);
+  }
+
+  function toggleSideView(view: Exclude<SideView, null>) {
+    setSideView((prev) => (prev === view ? null : view));
+  }
 
   return (
     <div className="flex h-dvh flex-col">
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
         <ActivityBar
-          explorerOpen={explorerOpen}
-          onToggleExplorer={() => setExplorerOpen((v) => !v)}
+          sideView={sideView}
+          onToggleSideView={toggleSideView}
           terminalOpen={terminalOpen}
           onToggleTerminal={() => setTerminalOpen((v) => !v)}
         />
-        {explorerOpen && <ExplorerPanel />}
+        {sideView === "explorer" && <ExplorerPanel />}
+        {sideView === "search" && <SearchPanel />}
+        {sideView === "extensions" && <ExtensionsPanel themeId={themeId} onActivate={activateTheme} />}
         <MobileNav />
 
         <div className="flex min-h-0 flex-1 flex-col">

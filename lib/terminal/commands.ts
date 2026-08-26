@@ -1,6 +1,6 @@
 import { getNode, resolveFsPath, toDisplayPath } from "@/lib/fs/helpers";
 import { pathToRoute } from "@/lib/fs/routes";
-import { getProject, projects, type StackItem } from "@/lib/data/projects";
+import { getProject, projects } from "@/lib/data/projects";
 import { shortBio } from "@/lib/data/about";
 import type { SkillGroup } from "@/lib/data/skills";
 import { tokenize } from "./parser";
@@ -100,19 +100,19 @@ const cat: CommandDef = {
         : { blocks: [{ kind: "markdown", body: content.body }] };
     }
     if (content.kind === "json") {
-      return {
-        blocks: [
-          content.variant === "stack"
-            ? { kind: "stack-badges", items: content.data as StackItem[] }
-            : { kind: "skill-badges", groups: content.data as SkillGroup[] },
-        ],
-      };
+      return { blocks: [{ kind: "skill-badges", groups: content.data as SkillGroup[] }] };
     }
     if (content.kind === "code") {
       const route = pathToRoute(node.path);
       return route
         ? { blocks: [muted(`→ opened ${route}`)], route }
         : { blocks: [{ kind: "code", language: content.language, body: JSON.stringify(content.data, null, 2) }] };
+    }
+    if (content.kind === "architecture") {
+      const route = pathToRoute(node.path);
+      return route
+        ? { blocks: [muted(`→ opened ${route}`)], route }
+        : { blocks: [{ kind: "architecture", steps: content.steps, connections: content.connections }] };
     }
     return { blocks: [muted(`${node.name} is a binary file. Use \`resume\` to open it.`)] };
   },

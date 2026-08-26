@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Project } from "@/lib/data/projects";
 import { StackBadges } from "./StackBadges";
 
@@ -13,6 +14,15 @@ export function CaseStudy({ project }: { project: Project }) {
       </p>
 
       <p className="mb-8 text-base leading-7 text-term-text/90">{project.summary}</p>
+
+      {project.architecture && project.architecture.length > 0 && (
+        <p className="-mt-6 mb-8 font-mono text-xs text-term-muted">
+          Curious how it&apos;s built? Try{" "}
+          <Link href={`/projects/${project.slug}/architecture`} className="text-term-accent2 hover:underline">
+            cat architecture.json
+          </Link>
+        </p>
+      )}
 
       <Section title="Problem">
         <p className="leading-7 text-term-text/90">{project.problem}</p>

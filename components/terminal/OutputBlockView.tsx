@@ -1,6 +1,6 @@
 import type { OutputBlock } from "@/lib/terminal/types";
 import { MarkdownPanel } from "@/components/renderers/MarkdownPanel";
-import { StackBadges } from "@/components/renderers/StackBadges";
+import { ArchitectureDiagram } from "@/components/renderers/ArchitectureDiagram";
 import { SkillBadges } from "@/components/renderers/SkillBadges";
 import { highlightJsonLine } from "@/components/renderers/JsonCodeView";
 import { cn } from "@/lib/utils/cn";
@@ -43,10 +43,10 @@ export function OutputBlockView({ block }: { block: OutputBlock }) {
           </code>
         </pre>
       );
-    case "stack-badges":
+    case "architecture":
       return (
-        <div className="my-2 rounded-lg border border-term-border bg-term-panel p-4">
-          <StackBadges items={block.items} />
+        <div className="my-2">
+          <ArchitectureDiagram steps={block.steps} connections={block.connections} />
         </div>
       );
     case "skill-badges":

@@ -1,11 +1,10 @@
-import type { StackItem } from "@/lib/data/projects";
 import type { SkillGroup } from "@/lib/data/skills";
 
 export type OutputBlock =
   | { kind: "text"; lines: string[]; tone?: "default" | "muted" | "error" | "success" }
   | { kind: "markdown"; body: string }
   | { kind: "code"; language: string; body: string }
-  | { kind: "stack-badges"; items: StackItem[] }
+  | { kind: "architecture"; steps: { label: string; detail?: string }[]; connections?: string[] }
   | { kind: "skill-badges"; groups: SkillGroup[] }
   | { kind: "clear" };
 
