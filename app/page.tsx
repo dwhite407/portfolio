@@ -11,7 +11,7 @@ export default function HomePage() {
         <span className="text-term-text">$ ls</span>
       </div>
 
-      <h1 className="mb-3 font-sans text-3xl font-semibold tracking-tight text-white">
+      <h1 className="mb-3 font-sans text-3xl font-semibold tracking-tight text-term-text">
         Hi, I&apos;m Drew White.
       </h1>
       <p className="mb-8 max-w-xl font-sans text-base leading-7 text-term-text/85">{shortBio}</p>

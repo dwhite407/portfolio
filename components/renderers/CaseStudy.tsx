@@ -8,7 +8,7 @@ export function CaseStudy({ project }: { project: Project }) {
       <div className="mb-1 font-mono text-xs text-term-muted">
         ~/projects/{project.slug}/README.md
       </div>
-      <h1 className="mb-2 text-2xl font-semibold tracking-tight text-white">{project.title}</h1>
+      <h1 className="mb-2 text-2xl font-semibold tracking-tight text-term-text">{project.title}</h1>
       <p className="mb-6 text-sm text-term-muted">
         {project.role} · {project.timeframe}
       </p>
@@ -85,7 +85,7 @@ export function CaseStudy({ project }: { project: Project }) {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mb-8">
-      <h2 className="mb-3 border-b border-term-border pb-2 text-lg font-semibold text-white">
+      <h2 className="mb-3 border-b border-term-border pb-2 text-lg font-semibold text-term-text">
         {title}
       </h2>
       {children}

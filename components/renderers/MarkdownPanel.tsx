@@ -9,15 +9,15 @@ export function MarkdownPanel({ body, className }: { body: string; className?: s
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
-            <h1 className="mb-4 mt-2 text-2xl font-semibold tracking-tight text-white">{children}</h1>
+            <h1 className="mb-4 mt-2 text-2xl font-semibold tracking-tight text-term-text">{children}</h1>
           ),
           h2: ({ children }) => (
-            <h2 className="mb-3 mt-8 border-b border-term-border pb-2 text-lg font-semibold text-white first:mt-0">
+            <h2 className="mb-3 mt-8 border-b border-term-border pb-2 text-lg font-semibold text-term-text first:mt-0">
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="mb-2 mt-6 text-base font-semibold text-white">{children}</h3>
+            <h3 className="mb-2 mt-6 text-base font-semibold text-term-text">{children}</h3>
           ),
           p: ({ children }) => <p className="mb-4 text-term-text/90">{children}</p>,
           a: ({ children, href }) => (
@@ -30,7 +30,7 @@ export function MarkdownPanel({ body, className }: { body: string; className?: s
               {children}
             </a>
           ),
-          strong: ({ children }) => <strong className="font-semibold text-white">{children}</strong>,
+          strong: ({ children }) => <strong className="font-semibold text-term-text">{children}</strong>,
           ul: ({ children }) => <ul className="mb-4 ml-5 list-disc space-y-1.5 text-term-text/90">{children}</ul>,
           ol: ({ children }) => <ol className="mb-4 ml-5 list-decimal space-y-1.5 text-term-text/90">{children}</ol>,
           li: ({ children }) => <li className="pl-1">{children}</li>,
@@ -56,7 +56,7 @@ export function MarkdownPanel({ body, className }: { body: string; className?: s
             </div>
           ),
           th: ({ children }) => (
-            <th className="border border-term-border bg-term-panel2 px-3 py-2 text-left font-semibold text-white">
+            <th className="border border-term-border bg-term-panel2 px-3 py-2 text-left font-semibold text-term-text">
               {children}
             </th>
           ),

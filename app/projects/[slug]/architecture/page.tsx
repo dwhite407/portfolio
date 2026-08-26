@@ -22,7 +22,7 @@ export default function ProjectArchitecturePage({ params }: { params: { slug: st
       <div className="mb-1 font-mono text-xs text-term-muted">
         ~/projects/{project.slug}/architecture.json
       </div>
-      <h1 className="mb-6 text-2xl font-semibold tracking-tight text-white">
+      <h1 className="mb-6 text-2xl font-semibold tracking-tight text-term-text">
         {project.title} — Architecture
       </h1>
       <ArchitectureDiagram steps={project.architecture ?? []} connections={project.connections} />

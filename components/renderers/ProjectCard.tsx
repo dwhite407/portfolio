@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
       className="group block rounded-lg border border-term-border bg-term-panel p-5 transition-colors hover:border-term-accent/50"
     >
       <div className="mb-1 font-mono text-xs text-term-muted">~/projects/{project.slug}</div>
-      <h3 className="mb-2 font-sans text-lg font-semibold text-white group-hover:text-term-accent">
+      <h3 className="mb-2 font-sans text-lg font-semibold text-term-text group-hover:text-term-accent">
         {project.title}
       </h3>
       <p className="mb-4 font-sans text-sm leading-6 text-term-text/80">{project.summary}</p>

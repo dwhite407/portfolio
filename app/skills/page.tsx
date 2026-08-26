@@ -13,7 +13,7 @@ export default function SkillsPage() {
         <span className="text-term-accent2">~</span>
         <span className="text-term-text">$ cat skills.json</span>
       </div>
-      <h1 className="mb-6 font-sans text-2xl font-semibold text-white">Skills</h1>
+      <h1 className="mb-6 font-sans text-2xl font-semibold text-term-text">Skills</h1>
       <SkillBadges groups={skills} />
     </div>
   );
