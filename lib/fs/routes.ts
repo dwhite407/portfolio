@@ -16,7 +16,27 @@ export function pathToRoute(fsPath: string): string | null {
   const architectureMatch = fsPath.match(/^\/projects\/([^/]+)\/architecture\.json$/);
   if (architectureMatch) return `/projects/${architectureMatch[1]}/architecture`;
 
-  if (fsPath === "/about.md") return "/about";
+  if (fsPath === "/about") return "/about";
+  if (fsPath === "/about/README.md") return "/about";
+  if (fsPath === "/about/education.md") return "/about/education";
+  if (fsPath === "/about/career.md") return "/about/career";
+  if (fsPath === "/about/favorites.json") return "/about/favorites";
+
+  if (fsPath === "/about/hobbies") return "/about/hobbies";
+  if (fsPath === "/about/hobbies/README.md") return "/about/hobbies";
+  const hobbyMatch = fsPath.match(/^\/about\/hobbies\/([^/]+)\.md$/);
+  if (hobbyMatch) return `/about/hobbies/${hobbyMatch[1]}`;
+
+  if (fsPath === "/about/life") return "/about/life";
+  if (fsPath === "/about/life/README.md") return "/about/life";
+  const lifeMatch = fsPath.match(/^\/about\/life\/([^/]+)\.md$/);
+  if (lifeMatch) return `/about/life/${lifeMatch[1]}`;
+
+  // The photos/ directory itself has no page — it's a plain container. Each
+  // image gets its own preview page, keyed by filename without the extension.
+  const photoMatch = fsPath.match(/^\/about\/photos\/([^/.]+)\.[^/]+$/);
+  if (photoMatch) return `/about/photos/${photoMatch[1]}`;
+
   if (fsPath === "/contact.md") return "/contact";
   if (fsPath === "/resume.pdf") return "/resume";
   if (fsPath === "/skills.json") return "/skills";
@@ -48,7 +68,22 @@ export function routeToInfo(pathname: string): RouteInfo | null {
     return { narration: `cat projects/${projectArchMatch[1]}/architecture.json` };
   }
 
-  if (pathname === "/about") return { narration: "cat about.md" };
+  if (pathname === "/about") return { cwd: "/about", narration: "cd about" };
+  if (pathname === "/about/education") return { narration: "cat education.md" };
+  if (pathname === "/about/career") return { narration: "cat career.md" };
+  if (pathname === "/about/favorites") return { narration: "cat favorites.json" };
+
+  if (pathname === "/about/hobbies") return { cwd: "/about/hobbies", narration: "cd hobbies" };
+  const hobbyRouteMatch = pathname.match(/^\/about\/hobbies\/([^/]+)$/);
+  if (hobbyRouteMatch) return { narration: `cat ${hobbyRouteMatch[1]}.md` };
+
+  if (pathname === "/about/life") return { cwd: "/about/life", narration: "cd life" };
+  const lifeRouteMatch = pathname.match(/^\/about\/life\/([^/]+)$/);
+  if (lifeRouteMatch) return { narration: `cat ${lifeRouteMatch[1]}.md` };
+
+  const photoRouteMatch = pathname.match(/^\/about\/photos\/([^/]+)$/);
+  if (photoRouteMatch) return { narration: `open ${photoRouteMatch[1]}` };
+
   if (pathname === "/contact") return { narration: "contact" };
   if (pathname === "/resume") return { narration: "resume" };
   if (pathname === "/skills") return { narration: "cat skills.json" };

@@ -6,12 +6,15 @@ export type OutputBlock =
   | { kind: "code"; language: string; body: string }
   | { kind: "architecture"; steps: { label: string; detail?: string }[]; connections?: string[] }
   | { kind: "skill-badges"; groups: SkillGroup[] }
+  | { kind: "listing"; entries: { name: string; route: string | null; isDir: boolean }[] }
   | { kind: "clear" };
 
 export interface CommandContext {
   cwd: string;
   args: string[];
   raw: string;
+  /** Previously run commands, oldest first (doesn't yet include the command currently running). */
+  history: string[];
 }
 
 export interface CommandOutcome {

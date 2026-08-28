@@ -6,7 +6,7 @@ import { runCommand } from "@/lib/terminal/commands";
 import { applyCompletion, getCompletions } from "@/lib/terminal/complete";
 import { routeToInfo } from "@/lib/fs/routes";
 import { toDisplayPath } from "@/lib/fs/helpers";
-import type { HistoryEntry } from "@/lib/terminal/types";
+import type { HistoryEntry, OutputBlock } from "@/lib/terminal/types";
 import { TerminalLine } from "./TerminalLine";
 
 const WELCOME: HistoryEntry = {
@@ -41,6 +41,8 @@ export function Terminal() {
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number | null>(null);
   const [tabCycle, setTabCycle] = useState<TabCycle | null>(null);
+  const [vimMode, setVimMode] = useState(false);
+  const [vimDirty, setVimDirty] = useState(false);
 
   const lastHandledRoute = useRef(pathname);
   const nextId = useRef(1);
@@ -79,7 +81,45 @@ export function Terminal() {
     (raw: string) => {
       const trimmed = raw.trim();
       const promptCwd = cwd;
-      const outcome = runCommand(trimmed, cwd);
+
+      // While "inside" the vim easter egg, every line is a vim command/keystroke,
+      // not a normal shell command — handle it separately and bail out early.
+      if (vimMode) {
+        let blocks: OutputBlock[];
+        let exitedVim = false;
+
+        if (trimmed === ":q") {
+          if (vimDirty) {
+            blocks = [{ kind: "text", lines: ["E37: No write since last change (add ! to override)"], tone: "error" }];
+          } else {
+            blocks = [{ kind: "text", lines: ["No changes — exiting."], tone: "muted" }];
+            exitedVim = true;
+          }
+        } else if (trimmed === ":q!") {
+          blocks = [{ kind: "text", lines: ["Force-quitting. Changes (that never existed) discarded."], tone: "muted" }];
+          exitedVim = true;
+        } else if (trimmed === ":wq" || trimmed === ":x") {
+          blocks = [{ kind: "text", lines: ['"Saved" (there was nothing to save) and quit.'], tone: "success" }];
+          exitedVim = true;
+        } else {
+          setVimDirty(true);
+          blocks = [{ kind: "text", lines: [trimmed ? `-- INSERT -- (typed: ${trimmed})` : "-- INSERT --"] }];
+        }
+
+        setLog((prev) => [
+          ...prev,
+          { id: nextId.current++, prompt: toDisplayPath(promptCwd), raw: trimmed, blocks },
+        ]);
+        if (exitedVim) {
+          setVimMode(false);
+          setVimDirty(false);
+        }
+        setHistoryIndex(null);
+        setTabCycle(null);
+        return;
+      }
+
+      const outcome = runCommand(trimmed, cwd, commandHistory);
 
       const isClear = outcome.blocks.length === 1 && outcome.blocks[0].kind === "clear";
 
@@ -104,13 +144,15 @@ export function Terminal() {
         router.push(outcome.route);
       }
 
+      if (trimmed.toLowerCase() === "vim") setVimMode(true);
+
       if (trimmed) {
         setCommandHistory((prev) => (prev[prev.length - 1] === trimmed ? prev : [...prev, trimmed]));
       }
       setHistoryIndex(null);
       setTabCycle(null);
     },
-    [cwd, router]
+    [cwd, router, vimMode, vimDirty, commandHistory]
   );
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {

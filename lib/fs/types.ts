@@ -28,7 +28,14 @@ export interface ArchitectureFile {
   connections?: string[];
 }
 
-export type FileContent = MarkdownFile | JsonFile | BinaryFile | CodeFile | ArchitectureFile;
+/** A placeholder for a personal photo the user hasn't added yet — renders an "add your photo here" card, not a real image. */
+export interface ImagePlaceholderFile {
+  kind: "image";
+  caption: string;
+  relatedRoute?: string;
+}
+
+export type FileContent = MarkdownFile | JsonFile | BinaryFile | CodeFile | ArchitectureFile | ImagePlaceholderFile;
 
 export interface FsFileNode {
   type: "file";

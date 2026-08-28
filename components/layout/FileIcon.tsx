@@ -77,6 +77,22 @@ export function FileIcon({ node, expanded }: { node: FsNode; expanded?: boolean 
     );
   }
 
+  if (ext === "jpg" || ext === "jpeg" || ext === "png" || ext === "gif" || ext === "webp") {
+    return (
+      <IconWrap className="text-term-accent">
+        <rect x="1.3" y="2.3" width="13.4" height="11.4" rx="1.1" stroke="currentColor" strokeWidth="1.1" />
+        <circle cx="5.1" cy="5.7" r="1.15" stroke="currentColor" strokeWidth="1.1" />
+        <path
+          d="M2.2 11.8 6 8l2.3 2.3L11 7.4l2.8 3.9"
+          stroke="currentColor"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </IconWrap>
+    );
+  }
+
   return (
     <IconWrap className="text-term-muted">
       <path

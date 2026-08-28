@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { OutputBlock } from "@/lib/terminal/types";
 import { MarkdownPanel } from "@/components/renderers/MarkdownPanel";
 import { ArchitectureDiagram } from "@/components/renderers/ArchitectureDiagram";
@@ -47,6 +48,29 @@ export function OutputBlockView({ block }: { block: OutputBlock }) {
       return (
         <div className="my-2">
           <ArchitectureDiagram steps={block.steps} connections={block.connections} />
+        </div>
+      );
+    case "listing":
+      return (
+        <div className="flex flex-col font-mono text-[13px] leading-6">
+          {block.entries.map((entry) =>
+            entry.route ? (
+              <Link
+                key={entry.name}
+                href={entry.route}
+                className={cn(
+                  "w-fit hover:underline",
+                  entry.isDir ? "text-term-accent2" : "text-term-text"
+                )}
+              >
+                {entry.name}
+              </Link>
+            ) : (
+              <span key={entry.name} className={entry.isDir ? "text-term-accent2" : "text-term-text"}>
+                {entry.name}
+              </span>
+            )
+          )}
         </div>
       );
     case "skill-badges":

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { aboutMarkdown } from "@/lib/data/about";
-import { MarkdownPanel } from "@/components/renderers/MarkdownPanel";
+import { AboutHub } from "@/components/renderers/AboutHub";
 
 export const metadata: Metadata = { title: "About" };
 
@@ -11,9 +10,9 @@ export default function AboutPage() {
         <span className="text-term-accent">drew.white@portfolio</span>
         <span className="text-term-text">:</span>
         <span className="text-term-accent2">~</span>
-        <span className="text-term-text">$ cat about.md</span>
+        <span className="text-term-text">$ cd about</span>
       </div>
-      <MarkdownPanel body={aboutMarkdown} />
+      <AboutHub />
     </div>
   );
 }
