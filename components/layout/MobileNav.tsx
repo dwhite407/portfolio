@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils/cn";
 const NAV_ITEMS = [
   { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/about/contact" },
 ];
 
 export function MobileNav() {

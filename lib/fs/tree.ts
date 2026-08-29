@@ -129,6 +129,18 @@ function buildAboutDir(): FsDirNode {
         content: { kind: "code", language: "json", data: favorites },
       },
       photosDir,
+      {
+        type: "file",
+        name: "me.json",
+        path: "/about/me.json",
+        content: { kind: "code", language: "json", data: profile },
+      },
+      {
+        type: "file",
+        name: "contact.md",
+        path: "/about/contact.md",
+        content: { kind: "markdown", body: contactMarkdown() },
+      },
     ],
   };
 }
@@ -139,24 +151,12 @@ export const root: FsDirNode = {
   path: "/",
   children: [
     buildAboutDir(),
-    {
-      type: "file",
-      name: "me.json",
-      path: "/me.json",
-      content: { kind: "code", language: "json", data: profile },
-    },
     projectsDir,
     {
       type: "file",
       name: "skills.json",
       path: "/skills.json",
       content: { kind: "json", variant: "skills", data: skills },
-    },
-    {
-      type: "file",
-      name: "contact.md",
-      path: "/contact.md",
-      content: { kind: "markdown", body: contactMarkdown() },
     },
     {
       type: "file",

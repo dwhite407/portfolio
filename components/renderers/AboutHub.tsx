@@ -13,6 +13,8 @@ export function AboutHub() {
         <NavCard href="/about/hobbies" title="hobbies/" desc="Golf, basketball, cooking, gaming" />
         <NavCard href="/about/life" title="life/" desc="Family and friends" />
         <NavCard href="/about/favorites" title="favorites.json" desc="The lighthearted stuff" />
+        <NavCard href="/about/me" title="me.json" desc="The whole profile as data" />
+        <NavCard href="/about/contact" title="contact.md" desc="Email, GitHub, LinkedIn" />
       </div>
     </div>
   );

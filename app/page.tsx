@@ -19,7 +19,7 @@ export default function HomePage() {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <NavCard href="/projects" title="projects/" desc="Case studies for three projects" />
         <NavCard href="/about" title="about/" desc="Education, career, hobbies, and more" />
-        <NavCard href="/contact" title="contact.md" desc="Email, GitHub, LinkedIn" />
+        <NavCard href="/about/contact" title="contact.md" desc="Email, GitHub, LinkedIn" />
         <NavCard href="/resume" title="resume.pdf" desc="View it right here" />
       </div>
 

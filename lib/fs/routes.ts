@@ -37,10 +37,11 @@ export function pathToRoute(fsPath: string): string | null {
   const photoMatch = fsPath.match(/^\/about\/photos\/([^/.]+)\.[^/]+$/);
   if (photoMatch) return `/about/photos/${photoMatch[1]}`;
 
-  if (fsPath === "/contact.md") return "/contact";
+  if (fsPath === "/about/me.json") return "/about/me";
+  if (fsPath === "/about/contact.md") return "/about/contact";
+
   if (fsPath === "/resume.pdf") return "/resume";
   if (fsPath === "/skills.json") return "/skills";
-  if (fsPath === "/me.json") return "/me";
 
   return null;
 }
@@ -84,10 +85,11 @@ export function routeToInfo(pathname: string): RouteInfo | null {
   const photoRouteMatch = pathname.match(/^\/about\/photos\/([^/]+)$/);
   if (photoRouteMatch) return { narration: `open ${photoRouteMatch[1]}` };
 
-  if (pathname === "/contact") return { narration: "contact" };
+  if (pathname === "/about/me") return { narration: "cat me.json" };
+  if (pathname === "/about/contact") return { narration: "contact" };
+
   if (pathname === "/resume") return { narration: "resume" };
   if (pathname === "/skills") return { narration: "cat skills.json" };
-  if (pathname === "/me") return { narration: "cat me.json" };
 
   return null;
 }

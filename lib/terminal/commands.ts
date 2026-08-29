@@ -97,7 +97,7 @@ const cd: CommandDef = {
       const hint =
         node.name === "resume.pdf"
           ? "It's a file — try `resume` to open it, or click it in the explorer."
-          : node.path === "/contact.md"
+          : node.path === "/about/contact.md"
           ? "It's a file — try `contact`, or click it in the explorer."
           : `It's a file — try \`cat ${node.name}\`, or click it in the explorer.`;
       return errorOutcome(`cd: not a directory: ${args[0]}`, hint);
@@ -208,7 +208,7 @@ const resume: CommandDef = {
 const contact: CommandDef = {
   usage: "contact",
   description: "show contact info",
-  run: () => ({ blocks: [muted("→ opened /contact")], route: "/contact" }),
+  run: () => ({ blocks: [muted("→ opened /about/contact")], route: "/about/contact" }),
 };
 
 const clear: CommandDef = {
@@ -277,7 +277,7 @@ const sudo: CommandDef = {
       };
     }
     if (cmd === "hire drew") {
-      return { blocks: [muted("Permission granted. Redirecting to contact...")], route: "/contact" };
+      return { blocks: [muted("Permission granted. Redirecting to contact...")], route: "/about/contact" };
     }
     return errorOutcome(
       "sudo: permission denied",
