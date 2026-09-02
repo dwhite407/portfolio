@@ -14,6 +14,7 @@ export const contact = {
       href: "https://www.linkedin.com/in/drew-white1/",
       kind: "linkedin",
     },
+    { label: "Website", href: "https://drew-white.site", kind: "site" },
   ] satisfies ContactLink[],
 };
 

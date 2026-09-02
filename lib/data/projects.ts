@@ -39,7 +39,7 @@ export const projects: Project[] = [
     title: "Blokus Board Game",
     summary: "A real-time multiplayer Blokus game with server-side move validation and live client sync.",
     role: "Full-stack developer (solo)",
-    timeframe: "April 2025 – Present",
+    timeframe: "April 2025 – October 2025",
     problem:
       "Wanted a lightweight, real-time way to play Blokus online with friends — one where the rules (piece legality, rotation, turn order) are enforced consistently for every player instead of trusted to each client.",
     constraints: [
@@ -66,6 +66,37 @@ export const projects: Project[] = [
       { label: "In-memory Game State", detail: "board + player state per room" },
     ],
     connections: ["WebSocket (Socket.IO)", "reads/writes"],
+  },
+  {
+    slug: "traffic-simulator",
+    title: "Traffic Simulator",
+    summary: "A real-time C++/SFML traffic simulation with signal logic and multi-lane vehicle behavior.",
+    role: "Full-stack developer",
+    timeframe: "June 2025 – August 2025",
+    problem:
+      "Wanted to model how real intersections handle traffic — signal timing, multi-lane behavior, and collision avoidance — as a real-time simulation instead of a static diagram.",
+    constraints: [
+      "Needed to run smoothly in real time with continuously spawning vehicles",
+      "Signals and stopping logic had to stay collision-aware across multiple synchronized intersections",
+      "Multi-lane behavior needed to plausibly match U.S. traffic patterns",
+    ],
+    decisions: [
+      "Engineered the simulation in C++ with SFML for rendering and the main loop.",
+      "Modeled traffic signals as finite-state machines, with collision-aware stopping logic per lane.",
+      "Used an object-oriented architecture to model vehicles and intersections as independent, synchronized entities.",
+    ],
+    retrospective:
+      "Next step would be pathfinding/routing for individual vehicles, plus configurable intersection layouts instead of hardcoded ones.",
+    stack: [
+      { name: "C++", category: "language" },
+      { name: "SFML", category: "framework" },
+    ],
+    architecture: [
+      { label: "Simulation Loop", detail: "spawns vehicles, advances state each frame" },
+      { label: "Traffic Signal FSM", detail: "finite-state signals, collision-aware stopping" },
+      { label: "SFML Renderer", detail: "draws vehicles, lanes, and intersections" },
+    ],
+    connections: ["updates", "renders"],
   },
   {
     slug: "fitness-tracker",
@@ -100,36 +131,6 @@ export const projects: Project[] = [
     connections: ["REST (HTTP/JSON)", "SQL"],
   },
   // TODO: placeholders below — swap in real projects as you build them.
-  {
-    slug: "project-3",
-    title: "Project Three — Replace Me",
-    summary: "One-line summary of what this project is and who it's for.",
-    role: "Solo developer",
-    timeframe: "2026",
-    problem:
-      "Describe the problem this project solved. What was broken, slow, missing, or annoying before this existed?",
-    constraints: [
-      "Ship a usable v1 in a fixed, tight timeframe",
-      "Had to work within an existing system/API you didn't control",
-    ],
-    decisions: [
-      "Chose [technology/approach] over [alternative] because [reason].",
-      "Kept the data model deliberately simple to move fast, with a plan to normalize later.",
-    ],
-    retrospective:
-      "What you'd do differently with hindsight: e.g. add tests earlier, or scope the MVP tighter before writing code.",
-    stack: [
-      { name: "TypeScript", category: "language" },
-      { name: "Next.js", category: "framework" },
-      { name: "PostgreSQL", category: "infra" },
-    ],
-    architecture: [
-      { label: "Next.js Frontend", detail: "[what the UI does]" },
-      { label: "[API layer]", detail: "[what it validates/handles]" },
-      { label: "PostgreSQL", detail: "[what's stored]" },
-    ],
-    connections: ["REST/GraphQL", "SQL"],
-  },
   {
     slug: "project-4",
     title: "Project Four — Replace Me",

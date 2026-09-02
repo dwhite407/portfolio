@@ -3,8 +3,10 @@
 // the same facts in human-readable form.
 export const profile = {
   name: "Drew White",
-  role: "Software Engineer Intern",
-  company: "Eli Lilly and Company",
+  role: "Full-time Student",
+  company: "Indiana University",
+  alsoWorking: "Warehouse Associate, NMW, Inc. (full-time)",
+  mostRecentInternship: "Software Engineer Intern, Eli Lilly and Company (May–Aug 2026)",
   location: "Indianapolis, IN",
   education: [
     {
@@ -21,8 +23,9 @@ export const profile = {
       completed: "2025-08",
     },
   ],
-  languages: ["JavaScript", "Python", "SQL", "C++", "Kotlin", "HTML", "CSS"],
-  currentlyBuilding: ["Blokus Board Game", "Fitness Tracker"],
+  certificates: ["Certificate in Software Application Developer", "Technical Certificate in Software Development"],
+  languages: ["JavaScript", "TypeScript", "Python", "SQL", "C++", "Kotlin", "HTML", "CSS"],
+  currentlyBuilding: ["This Portfolio"],
   awards: [
     { name: "Eli Lilly Career Planning Conference Capture the Flag — 2nd Place", date: "2025-10" },
     { name: "BDPA Indianapolis Hackathon — First Place, Best Design Award", date: "2025-11" },

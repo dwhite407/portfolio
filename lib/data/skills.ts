@@ -6,7 +6,7 @@ export interface SkillGroup {
 export const skills: SkillGroup[] = [
   {
     category: "Languages",
-    items: ["JavaScript", "Python", "SQL", "C++", "Kotlin", "HTML", "CSS"],
+    items: ["JavaScript", "TypeScript", "Python", "SQL", "C++", "Kotlin", "HTML", "CSS"],
   },
   {
     category: "Frameworks & Libraries",
@@ -14,10 +14,10 @@ export const skills: SkillGroup[] = [
   },
   {
     category: "Databases & Tools",
-    items: ["SQLite", "MySQL", "PostgreSQL", "REST APIs", "JSON"],
+    items: ["SQLite", "MySQL", "PostgreSQL", "REST APIs", "JSON", "ESLint", "PostCSS"],
   },
   {
     category: "Development Software",
-    items: ["Git", "Visual Studio", "Android Studio", "Figma"],
+    items: ["Git", "GitHub", "Visual Studio", "Android Studio", "Figma", "Vercel"],
   },
 ];
