@@ -130,93 +130,27 @@ export const projects: Project[] = [
     ],
     connections: ["REST (HTTP/JSON)", "SQL"],
   },
-  // TODO: placeholders below — swap in real projects as you build them.
-  {
-    slug: "project-4",
-    title: "Project Four — Replace Me",
-    summary: "One-line summary of what this project is and who it's for.",
-    role: "Full-stack developer",
-    timeframe: "2026",
-    problem:
-      "Describe the problem this project solved. What was the trigger — an idea, a class assignment, a personal need?",
-    constraints: [
-      "Limited time alongside school/work",
-      "Learning the stack while building it",
-    ],
-    decisions: [
-      "Chose [technology/approach] because it matched what you wanted to learn.",
-      "Cut [feature] from v1 to protect the timeline.",
-    ],
-    retrospective: "What you'd do differently: e.g. plan the data model before writing UI code.",
-    stack: [
-      { name: "Python", category: "language" },
-      { name: "Django", category: "framework" },
-      { name: "PostgreSQL", category: "infra" },
-    ],
-    architecture: [
-      { label: "[Client]", detail: "[what the user interacts with]" },
-      { label: "Django Backend", detail: "[what it does]" },
-      { label: "PostgreSQL", detail: "[what's stored]" },
-    ],
-    connections: ["HTTP", "ORM"],
-  },
-  {
-    slug: "project-5",
-    title: "Project Five — Replace Me",
-    summary: "One-line summary of what this project is and who it's for.",
-    role: "Mobile developer",
-    timeframe: "2026",
-    problem: "Describe the problem this project solved, from the user's point of view.",
-    constraints: [
-      "Needed to work well on low-end devices",
-      "No budget for paid infrastructure beyond a free tier",
-    ],
-    decisions: [
-      "Chose [technology/approach] to keep the app responsive.",
-      "Cached data locally to reduce network calls.",
-    ],
-    retrospective: "What you'd do differently: e.g. plan for offline support from day one.",
-    stack: [
-      { name: "Kotlin", category: "language" },
-      { name: "Jetpack Compose", category: "framework" },
-      { name: "SQLite", category: "infra" },
-    ],
-    architecture: [
-      { label: "Jetpack Compose UI", detail: "[what the screens do]" },
-      { label: "[Sync layer]", detail: "[what it syncs/caches]" },
-      { label: "Local SQLite", detail: "[what's stored on-device]" },
-    ],
-    connections: ["[protocol]", "reads/writes"],
-  },
-  {
-    slug: "project-6",
-    title: "Project Six — Replace Me",
-    summary: "One-line summary of what this project is and who it's for.",
-    role: "Backend engineer",
-    timeframe: "2027",
-    problem: "Describe the problem this project solved — an inefficiency, a manual process, a bottleneck.",
-    constraints: [
-      "Had to stay compatible with an existing data source",
-      "Team project — needed clear ownership of each piece",
-    ],
-    decisions: [
-      "Chose [technology/approach] because it matched the team's existing skill set.",
-      "Wrote a migration script instead of a big-bang cutover to de-risk rollout.",
-    ],
-    retrospective: "What you'd do differently: e.g. invest in monitoring/alerting sooner.",
-    stack: [
-      { name: "SQL", category: "language" },
-      { name: "C++", category: "language" },
-      { name: "Docker", category: "tool" },
-    ],
-    architecture: [
-      { label: "[Data source]", detail: "[where data comes from]" },
-      { label: "[Processing service]", detail: "[what it transforms/computes]" },
-      { label: "SQL Database", detail: "[what's stored]" },
-    ],
-    connections: ["[protocol]", "SQL"],
-  },
+  // Details still to come — fill these in the same shape as the projects above.
+  stub("calorie-tracker", "Calorie Tracker"),
+  stub("skill-gap-analyzer", "Skill-Gap Analyzer"),
+  stub("recipe-finder", "Recipe Finder"),
+  stub("coffee-shop", "Coffee Shop"),
 ];
+
+function stub(slug: string, title: string): Project {
+  return {
+    slug,
+    title,
+    summary: "Write-up coming soon.",
+    role: "Developer",
+    timeframe: "",
+    problem: "Write-up coming soon.",
+    constraints: [],
+    decisions: [],
+    retrospective: "",
+    stack: [],
+  };
+}
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);

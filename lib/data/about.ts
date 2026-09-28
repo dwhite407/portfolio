@@ -22,6 +22,7 @@ export const educationMarkdown = `## Education
 - **Indiana University** — B.S. Computer Science, Minor in Applied Data Science. Expected May 2027, GPA 3.90/4.00. Dean's List: Fall 2025, Spring 2026.
   - Certificates: Certificate in Software Application Developer, Technical Certificate in Software Development.
 - **Ivy Tech Community College** — A.S. Software Development, *Cum Laude*, August 2025. Dean's List: Fall 2024, Spring 2024, Fall 2025, Spring 2025.
+- **Eastern Hancock High School** (Charlottesville, IN) — High School Diploma, May 2021.
 `;
 
 export const careerMarkdown = `## Experience

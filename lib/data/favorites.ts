@@ -1,14 +1,13 @@
-// Lighthearted, not exhaustive — this is me.json's fun cousin. TODO fields are
-// exactly that: real values to fill in.
+// Lighthearted, not exhaustive — this is me.json's fun cousin.
 export const favorites = {
+  movie: "Shutter Island",
+  show: "Suits",
+  food: "Tacos",
+  drink: "Diet Coke",
+  color: "Neutrals",
   sport: "Basketball",
-  hobby: "Golf",
-  food: "TODO",
-  game: "TODO",
-  movie: "TODO",
-  music: "TODO",
-  editor: "VS Code",
-  language: "TODO",
-  worst_enemy: "CSS",
-  current_obsession: "TODO",
+  hobby: "Sports",
+  game: "Rainbow Six Siege",
+  artist: "Kodak Black",
+  language: "JavaScript",
 } as const;

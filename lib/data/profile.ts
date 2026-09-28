@@ -22,6 +22,12 @@ export const profile = {
       honors: "Cum Laude",
       completed: "2025-08",
     },
+    {
+      school: "Eastern Hancock High School",
+      location: "Charlottesville, IN",
+      degree: "High School Diploma",
+      completed: "2021-05",
+    },
   ],
   certificates: ["Certificate in Software Application Developer", "Technical Certificate in Software Development"],
   languages: ["JavaScript", "TypeScript", "Python", "SQL", "C++", "Kotlin", "HTML", "CSS"],
