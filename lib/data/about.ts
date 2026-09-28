@@ -20,7 +20,6 @@ professional side, hobbies and life on the personal side.
 export const educationMarkdown = `## Education
 
 - **Indiana University** — B.S. Computer Science, Minor in Applied Data Science. Expected May 2027, GPA 3.90/4.00. Dean's List: Fall 2025, Spring 2026.
-  - Certificates: Certificate in Software Application Developer, Technical Certificate in Software Development.
 - **Ivy Tech Community College** — A.S. Software Development, *Cum Laude*, August 2025. Dean's List: Fall 2024, Spring 2024, Fall 2025, Spring 2025.
 - **Eastern Hancock High School** (Charlottesville, IN) — High School Diploma, May 2021.
 `;
@@ -30,6 +29,11 @@ export const careerMarkdown = `## Experience
 - **Software Engineer Intern, Eli Lilly and Company** (May 2026 – August 2026) — engineered a full-stack React/FastAPI application that reduced return time and saved 70+ hours annually; built Python REST APIs with PostgreSQL and ServiceNow integrations to automate the device-return flow; implemented CI/CD with GitHub Actions, Argo CD, and CATS for automated deployment.
 - **Warehouse Associate, NMW, Inc.** (February 2024 – Present, full-time)
 - **Technician, High Power Technical Services (Dish Network)** (October 2023 – January 2024) — configured and troubleshot routers, satellite systems, and smart-home devices at 30+ sites per week, increasing installation efficiency by 15%.
+
+## Certificates
+
+- Certificate in Software Application Developer
+- Technical Certificate in Software Development
 
 ## Awards
 
